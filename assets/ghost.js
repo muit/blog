@@ -34,8 +34,8 @@ define('ghost/adapters/base', ['exports', 'ember-data', 'ghost/utils/ghost-paths
             // Ensure trailing slashes
             var url = this._super(type, id);
 
-            if (url.slice(-1) !== "/blog/blog/") {
-                url += "/blog/blog/";
+            if (url.slice(-1) !== "/blog/") {
+                url += "/blog/";
             }
 
             return url;
@@ -237,7 +237,7 @@ define('ghost/assets/lib/uploader', ['exports', 'ghost/utils/ghost-paths'], func
         Ghost = ghostPaths['default']();
 
     UploadUi = function ($dropzone, settings) {
-        var $url = "<div class=\"js-url\"><input class=\"url js-upload-url\" type=\"url\" placeholder=\"http://\"/blog/blog/></div>",
+        var $url = "<div class=\"js-url\"><input class=\"url js-upload-url\" type=\"url\" placeholder=\"http://\"/blog/></div>",
             $cancel = "<a class=\"image-cancel js-cancel\" title=\"Delete\"><span class=\"hidden\">Delete</span></a>",
             $progress = $("<div />", {
             "class": "js-upload-progress progress progress-success active",
@@ -278,7 +278,7 @@ define('ghost/assets/lib/uploader', ['exports', 'ghost/utils/ghost-paths'], func
                     var $img = $dropzone.find("img.js-upload-target").attr({ src: "", width: "auto", height: "auto" });
 
                     $progress.animate({ opacity: 0 }, 250, function () {
-                        $dropzone.find("span.media").after("<img class=\"fileupload-loading\"  src=\"" + Ghost.subdir + "/blog/blog/ghost/img/loadingcat.gif\" />");
+                        $dropzone.find("span.media").after("<img class=\"fileupload-loading\"  src=\"" + Ghost.subdir + "/blog/ghost/img/loadingcat.gif\" />");
                         if (!settings.editor) {
                             $progress.find(".fileupload-loading").css({ top: "56px" });
                         }
@@ -295,7 +295,7 @@ define('ghost/assets/lib/uploader', ['exports', 'ghost/utils/ghost-paths'], func
                 var self = this;
 
                 $dropzone.find(".js-fileupload").fileupload().fileupload("option", {
-                    url: Ghost.apiRoot + "/blog/blog/uploads/",
+                    url: Ghost.apiRoot + "/blog/uploads/",
                     add: function add(e, data) {
                         /*jshint unused:false*/
                         $(".js-button-accept").prop("disabled", true);
@@ -942,9 +942,9 @@ define('ghost/components/gh-navitem-url-input', ['exports', 'ember'], function (
     'use strict';
 
     function joinUrlParts(url, path) {
-        if (path[0] !== "/blog/blog/" && url.slice(-1) !== "/blog/blog/") {
-            path = "/blog/blog/" + path;
-        } else if (path[0] === "/blog/blog/" && url.slice(-1) === "/blog/blog/") {
+        if (path[0] !== "/blog/" && url.slice(-1) !== "/blog/") {
+            path = "/blog/" + path;
+        } else if (path[0] === "/blog/" && url.slice(-1) === "/blog/") {
             path = path.slice(1);
         }
 
@@ -1557,11 +1557,11 @@ define('ghost/components/gh-url-preview', ['exports', 'ember'], function (export
                 // Remove `http[s]://`
 
             // Get the prefix and slug values
-            prefix = this.get("prefix") ? this.get("prefix") + "/blog/blog/" : "",
-                slug = this.get("slug") ? this.get("slug") + "/blog/blog/" : "",
+            prefix = this.get("prefix") ? this.get("prefix") + "/blog/" : "",
+                slug = this.get("slug") ? this.get("slug") + "/blog/" : "",
 
             // Join parts of the URL together with slashes
-            theUrl = noSchemeBlogUrl + "/blog/blog/" + prefix + slug;
+            theUrl = noSchemeBlogUrl + "/blog/" + prefix + slug;
 
             return theUrl;
         })
@@ -1584,7 +1584,7 @@ define('ghost/controllers/application', ['exports', 'ember'], function (exports,
         showSettingsMenu: false,
 
         userImage: Ember['default'].computed("session.user.image", function () {
-            return this.get("session.user.image") || this.get("ghostPaths.url").asset("/blog/blog/shared/img/user-image.png");
+            return this.get("session.user.image") || this.get("ghostPaths.url").asset("/blog/shared/img/user-image.png");
         }),
 
         userImageBackground: Ember['default'].computed("userImage", function () {
@@ -2402,11 +2402,11 @@ define('ghost/controllers/post-settings-menu', ['exports', 'ember', 'ghost/utils
         seoURL: Ember['default'].computed("model.slug", function () {
             var blogUrl = this.get("config").blogUrl,
                 seoSlug = this.get("model.slug") ? this.get("model.slug") : "",
-                seoURL = blogUrl + "/blog/blog/" + seoSlug;
+                seoURL = blogUrl + "/blog/" + seoSlug;
 
             // only append a slash to the URL if the slug exists
             if (seoSlug) {
-                seoURL += "/blog/blog/";
+                seoURL += "/blog/";
             }
 
             if (seoURL.length > 70) {
@@ -3052,7 +3052,7 @@ define('ghost/controllers/posts/post', ['exports', 'ember'], function (exports, 
         }),
 
         authorAvatar: Ember['default'].computed("model.author.image", function () {
-            return this.get("model.author.image") || this.get("ghostPaths.url").asset("/blog/blog/shared/img/user-image.png");
+            return this.get("model.author.image") || this.get("ghostPaths.url").asset("/blog/shared/img/user-image.png");
         }),
 
         authorAvatarBackground: Ember['default'].computed("authorAvatar", function () {
@@ -3301,13 +3301,13 @@ define('ghost/controllers/settings/general', ['exports', 'ember', 'ghost/utils/r
         isDatedPermalinks: Ember['default'].computed("model.permalinks", function (key, value) {
             // setter
             if (arguments.length > 1) {
-                this.set("model.permalinks", value ? "/blog/blog/:year/:month/:day/:slug/" : "/blog/blog/:slug/");
+                this.set("model.permalinks", value ? "/blog/:year/:month/:day/:slug/" : "/blog/:slug/");
             }
 
             // getter
             var slugForm = this.get("model.permalinks");
 
-            return slugForm !== "/blog/blog/:slug/";
+            return slugForm !== "/blog/:slug/";
         }),
 
         themes: Ember['default'].computed(function () {
@@ -3476,7 +3476,7 @@ define('ghost/controllers/settings/navigation', ['exports', 'ember'], function (
         blogUrl: Ember['default'].computed("config.blogUrl", function () {
             var url = this.get("config.blogUrl");
 
-            return url.slice(-1) !== "/blog/blog/" ? url + "/blog/blog/" : url;
+            return url.slice(-1) !== "/blog/" ? url + "/blog/" : url;
         }),
 
         navigationItems: Ember['default'].computed("model.navigation", function () {
@@ -3590,11 +3590,11 @@ define('ghost/controllers/settings/navigation', ['exports', 'ember'], function (
                         // if the last char is not a slash, then add one,
                         // as long as there is no # or . in the URL (anchor or file extension)
                         // this also handles the empty case for the homepage
-                        if (url[url.length - 1] !== "/blog/blog/" && url.indexOf("#") === -1 && url.indexOf(".") === -1) {
-                            url += "/blog/blog/";
+                        if (url[url.length - 1] !== "/blog/" && url.indexOf("#") === -1 && url.indexOf(".") === -1) {
+                            url += "/blog/";
                         }
-                    } else if (!validator.isURL(url) && url !== "" && url[0] !== "/blog/blog/" && url.indexOf("mailto:") !== 0) {
-                        url = "/blog/blog/" + url;
+                    } else if (!validator.isURL(url) && url !== "" && url[0] !== "/blog/" && url.indexOf("mailto:") !== 0) {
+                        url = "/blog/" + url;
                     }
 
                     return { label: label, url: url };
@@ -3683,11 +3683,11 @@ define('ghost/controllers/settings/tags', ['exports', 'ember', 'ghost/mixins/pag
         seoURL: Ember['default'].computed("activeTagSlugScratch", function () {
             var blogUrl = this.get("config").blogUrl,
                 seoSlug = this.get("activeTagSlugScratch") ? this.get("activeTagSlugScratch") : "",
-                seoURL = blogUrl + "/blog/blog/tag/" + seoSlug;
+                seoURL = blogUrl + "/blog/tag/" + seoSlug;
 
             // only append a slash to the URL if the slug exists
             if (seoSlug) {
-                seoURL += "/blog/blog/";
+                seoURL += "/blog/";
             }
 
             if (seoURL.length > 70) {
@@ -3798,7 +3798,7 @@ define('ghost/controllers/settings/users/user', ['exports', 'ember', 'ghost/mode
         lastPromise: null,
 
         coverDefault: Ember['default'].computed("ghostPaths", function () {
-            return this.get("ghostPaths.url").asset("/blog/blog/shared/img/user-cover.png");
+            return this.get("ghostPaths.url").asset("/blog/shared/img/user-cover.png");
         }),
         coverImageBackground: Ember['default'].computed("user.cover", "coverDefault", function () {
             var url = this.get("user.cover") || this.get("coverDefault");
@@ -3810,7 +3810,7 @@ define('ghost/controllers/settings/users/user', ['exports', 'ember', 'ghost/mode
         }),
 
         userDefault: Ember['default'].computed("ghostPaths", function () {
-            return this.get("ghostPaths.url").asset("/blog/blog/shared/img/user-image.png");
+            return this.get("ghostPaths.url").asset("/blog/shared/img/user-image.png");
         }),
         userImageBackground: Ember['default'].computed("user.image", "userDefault", function () {
             var url = this.get("user.image") || this.get("userDefault");
@@ -3907,9 +3907,9 @@ define('ghost/controllers/settings/users/user', ['exports', 'ember', 'ghost/mode
                     if (slugChanged) {
                         currentPath = window.history.state.path;
 
-                        newPath = currentPath.split("/blog/blog/");
+                        newPath = currentPath.split("/blog/");
                         newPath[newPath.length - 2] = model.get("slug");
-                        newPath = newPath.join("/blog/blog/");
+                        newPath = newPath.join("/blog/");
 
                         window.history.replaceState({ path: newPath }, "", newPath);
                     }
@@ -4366,10 +4366,10 @@ define('ghost/helpers/gh-path', ['exports', 'ember', 'ghost/utils/ghost-paths'],
 
         // handle leading and trailing slashes
 
-        base = base[base.length - 1] !== "/blog/blog/" ? base + "/blog/blog/" : base;
+        base = base[base.length - 1] !== "/blog/" ? base + "/blog/" : base;
 
         if (url && url.length > 0) {
-            if (url[0] === "/blog/blog/") {
+            if (url[0] === "/blog/") {
                 url = url.substr(1);
             }
 
@@ -4421,12 +4421,12 @@ define('ghost/initializers/authentication', ['exports', 'ember', 'ghost/utils/gh
                 authenticationRoute: "signin",
                 routeAfterAuthentication: "posts",
                 authorizer: "simple-auth-authorizer:oauth2-bearer",
-                localStorageKey: "ghost" + (Ghost.subdir.indexOf("/blog/blog/") === 0 ? "-" + Ghost.subdir.substr(1) : "") + ":session"
+                localStorageKey: "ghost" + (Ghost.subdir.indexOf("/blog/") === 0 ? "-" + Ghost.subdir.substr(1) : "") + ":session"
             };
 
             window.ENV["simple-auth-oauth2"] = {
-                serverTokenEndpoint: Ghost.apiRoot + "/blog/blog/authentication/token",
-                serverTokenRevocationEndpoint: Ghost.apiRoot + "/blog/blog/authentication/revoke",
+                serverTokenEndpoint: Ghost.apiRoot + "/blog/authentication/token",
+                serverTokenRevocationEndpoint: Ghost.apiRoot + "/blog/authentication/revoke",
                 refreshAccessTokens: true
             };
 
@@ -4585,7 +4585,7 @@ define('ghost/initializers/trailing-history', ['exports', 'ember'], function (ex
     trailingHistory = Ember['default'].HistoryLocation.extend({
         formatURL: function formatURL() {
             // jscs: disable
-            return this._super.apply(this, arguments).replace(/\/?$/, "/blog/blog/");
+            return this._super.apply(this, arguments).replace(/\/?$/, "/blog/");
             // jscs: enable
         }
     });
@@ -6678,11 +6678,11 @@ define('ghost/router', ['exports', 'ember', 'ghost/utils/ghost-paths', 'ghost/ut
         this.route("setup");
         this.route("signin");
         this.route("signout");
-        this.route("signup", { path: "/blog/blog/signup/:token" });
+        this.route("signup", { path: "/blog/signup/:token" });
         this.route("forgotten");
-        this.route("reset", { path: "/blog/blog/reset/:token" });
+        this.route("reset", { path: "/blog/reset/:token" });
 
-        this.resource("posts", { path: "/blog/blog/" }, function () {
+        this.resource("posts", { path: "/blog/" }, function () {
             this.route("post", { path: ":post_id" });
         });
 
@@ -6694,8 +6694,8 @@ define('ghost/router', ['exports', 'ember', 'ghost/utils/ghost-paths', 'ghost/ut
         this.resource("settings", function () {
             this.route("general");
 
-            this.resource("settings.users", { path: "/blog/blog/users" }, function () {
-                this.route("user", { path: "/blog/blog/:slug" });
+            this.resource("settings.users", { path: "/blog/users" }, function () {
+                this.route("user", { path: "/blog/:slug" });
             });
 
             this.route("about");
@@ -6711,7 +6711,7 @@ define('ghost/router', ['exports', 'ember', 'ghost/utils/ghost-paths', 'ghost/ut
         // Redirect legacy content to posts
         this.route("content");
 
-        this.route("error404", { path: "/blog/blog/*path" });
+        this.route("error404", { path: "/blog/*path" });
     });
 
     exports['default'] = Router;
@@ -8419,20 +8419,20 @@ define('ghost/templates/-contributors', ['exports'], function (exports) {
         var attrMorph11 = dom.createAttrMorph(element11, 'src');
         var attrMorph12 = dom.createAttrMorph(element12, 'src');
         var attrMorph13 = dom.createAttrMorph(element13, 'src');
-        attribute(env, attrMorph0, element0, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/ErisDS"]));
-        attribute(env, attrMorph1, element1, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/jaswilli"]));
-        attribute(env, attrMorph2, element2, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/PaulAdamDavis"]));
-        attribute(env, attrMorph3, element3, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/novaugust"]));
-        attribute(env, attrMorph4, element4, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/JohnONolan"]));
-        attribute(env, attrMorph5, element5, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/cobbspur"]));
-        attribute(env, attrMorph6, element6, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/acburdine"]));
-        attribute(env, attrMorph7, element7, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/felixrieseberg"]));
-        attribute(env, attrMorph8, element8, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/sebgie"]));
-        attribute(env, attrMorph9, element9, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/rwjblue"]));
-        attribute(env, attrMorph10, element10, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/halfdan"]));
-        attribute(env, attrMorph11, element11, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/dbalders"]));
-        attribute(env, attrMorph12, element12, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/harryhope"]));
-        attribute(env, attrMorph13, element13, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/contributors"], {}), "/blog/blog/pborreli"]));
+        attribute(env, attrMorph0, element0, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/ErisDS"]));
+        attribute(env, attrMorph1, element1, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/jaswilli"]));
+        attribute(env, attrMorph2, element2, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/PaulAdamDavis"]));
+        attribute(env, attrMorph3, element3, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/novaugust"]));
+        attribute(env, attrMorph4, element4, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/JohnONolan"]));
+        attribute(env, attrMorph5, element5, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/cobbspur"]));
+        attribute(env, attrMorph6, element6, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/acburdine"]));
+        attribute(env, attrMorph7, element7, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/felixrieseberg"]));
+        attribute(env, attrMorph8, element8, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/sebgie"]));
+        attribute(env, attrMorph9, element9, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/rwjblue"]));
+        attribute(env, attrMorph10, element10, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/halfdan"]));
+        attribute(env, attrMorph11, element11, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/dbalders"]));
+        attribute(env, attrMorph12, element12, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/harryhope"]));
+        attribute(env, attrMorph13, element13, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/contributors"], {}), "/blog/pborreli"]));
         return fragment;
       }
     };
@@ -9302,7 +9302,7 @@ define('ghost/templates/-navbar', ['exports'], function (exports) {
         var morph4 = dom.createMorphAt(element6,2,2);
         var morph5 = dom.createMorphAt(element7,1,1);
         var morph6 = dom.createMorphAt(element7,2,2);
-        attribute(env, attrMorph0, element5, "href", concat(env, [get(env, context, "config.blogUrl"), "/blog/blog/"]));
+        attribute(env, attrMorph0, element5, "href", concat(env, [get(env, context, "config.blogUrl"), "/blog/"]));
         block(env, morph0, context, "link-to", ["posts"], {"classNames": "nav-item nav-content js-nav-item"}, child0, null);
         block(env, morph1, context, "link-to", ["editor.new"], {"classNames": "nav-item nav-new js-nav-item"}, child1, null);
         block(env, morph2, context, "unless", [get(env, context, "session.user.isAuthor")], {}, child2, null);
@@ -11565,8 +11565,8 @@ define('ghost/templates/error', ['exports'], function (exports) {
         var attrMorph2 = dom.createAttrMorph(element5, 'href');
         var morph2 = dom.createMorphAt(fragment,2,2,contextualElement);
         dom.insertBoundary(fragment, null);
-        attribute(env, attrMorph0, element3, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/404-ghost@2x.png"], {})]));
-        attribute(env, attrMorph1, element3, "srcset", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/404-ghost.png"], {}), " 1x, ", subexpr(env, context, "gh-path", ["admin", "/blog/blog/img/404-ghost@2x.png"], {}), " 2x"]));
+        attribute(env, attrMorph0, element3, "src", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/404-ghost@2x.png"], {})]));
+        attribute(env, attrMorph1, element3, "srcset", concat(env, [subexpr(env, context, "gh-path", ["admin", "/blog/img/404-ghost.png"], {}), " 1x, ", subexpr(env, context, "gh-path", ["admin", "/blog/img/404-ghost@2x.png"], {}), " 2x"]));
         content(env, morph0, context, "code");
         content(env, morph1, context, "message");
         attribute(env, attrMorph2, element5, "href", concat(env, [subexpr(env, context, "gh-path", ["blog"], {})]));
@@ -18333,7 +18333,7 @@ define('ghost/templates/settings/tags', ['exports'], function (exports) {
           dom.appendChild(el2, el3);
           var el3 = dom.createElement("span");
           dom.setAttribute(el3,"class","label label-default");
-          var el4 = dom.createTextNode("/blog/blog/");
+          var el4 = dom.createTextNode("/blog/");
           dom.appendChild(el3, el4);
           var el4 = dom.createComment("");
           dom.appendChild(el3, el4);
@@ -20395,7 +20395,7 @@ define('ghost/templates/settings/users/user', ['exports'], function (exports) {
         var el5 = dom.createElement("p");
         var el6 = dom.createComment("");
         dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("/blog/blog/author/");
+        var el6 = dom.createTextNode("/blog/author/");
         dom.appendChild(el5, el6);
         var el6 = dom.createComment("");
         dom.appendChild(el5, el6);
@@ -21584,7 +21584,7 @@ define('ghost/tests/unit/controllers/post-settings-menu_test', ['ember', 'ember-
                     model: Ember['default'].Object.create({ slug: longSlug })
                 });
 
-                expected = blogURL + "/blog/blog/" + longSlug + "/blog/blog/";
+                expected = blogURL + "/blog/" + longSlug + "/blog/";
                 expected = expected.substr(0, 70) + "&hellip;";
 
                 expect(controller.get("seoURL").toString().length).to.equal(78);
@@ -22049,14 +22049,14 @@ define('ghost/tests/unit/controllers/settings-general_test', ['ember', 'ember-mo
         ember_mocha.it("isDatedPermalinks should be correct", function () {
             var controller = this.subject({
                 model: Ember['default'].Object.create({
-                    permalinks: "/blog/blog/:year/:month/:day/:slug/"
+                    permalinks: "/blog/:year/:month/:day/:slug/"
                 })
             });
 
             expect(controller.get("isDatedPermalinks")).to.be.ok;
 
             Ember['default'].run(function () {
-                controller.set("model.permalinks", "/blog/blog/:slug/");
+                controller.set("model.permalinks", "/blog/:slug/");
 
                 expect(controller.get("isDatedPermalinks")).to.not.be.ok;
             });
@@ -22065,7 +22065,7 @@ define('ghost/tests/unit/controllers/settings-general_test', ['ember', 'ember-mo
         ember_mocha.it("setting isDatedPermalinks should switch between dated and slug", function () {
             var controller = this.subject({
                 model: Ember['default'].Object.create({
-                    permalinks: "/blog/blog/:year/:month/:day/:slug/"
+                    permalinks: "/blog/:year/:month/:day/:slug/"
                 })
             });
 
@@ -22073,14 +22073,14 @@ define('ghost/tests/unit/controllers/settings-general_test', ['ember', 'ember-mo
                 controller.set("isDatedPermalinks", false);
 
                 expect(controller.get("isDatedPermalinks")).to.not.be.ok;
-                expect(controller.get("model.permalinks")).to.equal("/blog/blog/:slug/");
+                expect(controller.get("model.permalinks")).to.equal("/blog/:slug/");
             });
 
             Ember['default'].run(function () {
                 controller.set("isDatedPermalinks", true);
 
                 expect(controller.get("isDatedPermalinks")).to.be.ok;
-                expect(controller.get("model.permalinks")).to.equal("/blog/blog/:year/:month/:day/:slug/");
+                expect(controller.get("model.permalinks")).to.equal("/blog/:year/:month/:day/:slug/");
             });
         });
 
@@ -22431,20 +22431,20 @@ define('ghost/tests/unit/utils/ghost-paths_test', ['ghost/utils/ghost-paths'], f
             it("should join two or more paths, normalizing slashes", function () {
                 var path;
 
-                path = join("/blog/blog/one/", "/blog/blog/two/");
-                expect(path).to.equal("/blog/blog/one/two/");
+                path = join("/blog/one/", "/blog/two/");
+                expect(path).to.equal("/blog/one/two/");
 
-                path = join("/blog/blog/one", "/blog/blog/two/");
-                expect(path).to.equal("/blog/blog/one/two/");
+                path = join("/blog/one", "/blog/two/");
+                expect(path).to.equal("/blog/one/two/");
 
-                path = join("/blog/blog/one/", "two/");
-                expect(path).to.equal("/blog/blog/one/two/");
+                path = join("/blog/one/", "two/");
+                expect(path).to.equal("/blog/one/two/");
 
-                path = join("/blog/blog/one/", "two/", "/blog/blog/three/");
-                expect(path).to.equal("/blog/blog/one/two/three/");
+                path = join("/blog/one/", "two/", "/blog/three/");
+                expect(path).to.equal("/blog/one/two/three/");
 
-                path = join("/blog/blog/one/", "two", "three/");
-                expect(path).to.equal("/blog/blog/one/two/three/");
+                path = join("/blog/one/", "two", "three/");
+                expect(path).to.equal("/blog/one/two/three/");
             });
 
             it("should not change the slash at the beginning", function () {
@@ -22454,21 +22454,21 @@ define('ghost/tests/unit/utils/ghost-paths_test', ['ghost/utils/ghost-paths'], f
                 expect(path).to.equal("one/");
                 path = join("one/", "two");
                 expect(path).to.equal("one/two/");
-                path = join("/blog/blog/one/", "two");
-                expect(path).to.equal("/blog/blog/one/two/");
+                path = join("/blog/one/", "two");
+                expect(path).to.equal("/blog/one/two/");
                 path = join("one/", "two", "three");
                 expect(path).to.equal("one/two/three/");
-                path = join("/blog/blog/one/", "two", "three");
-                expect(path).to.equal("/blog/blog/one/two/three/");
+                path = join("/blog/one/", "two", "three");
+                expect(path).to.equal("/blog/one/two/three/");
             });
 
             it("should always return a slash at the end", function () {
                 var path;
 
                 path = join();
-                expect(path).to.equal("/blog/blog/");
+                expect(path).to.equal("/blog/");
                 path = join("");
-                expect(path).to.equal("/blog/blog/");
+                expect(path).to.equal("/blog/");
                 path = join("one");
                 expect(path).to.equal("one/");
                 path = join("one/");
@@ -22926,17 +22926,17 @@ define('ghost/utils/ghost-paths', ['exports'], function (exports) {
 
         parts.forEach(function (part) {
             if (part) {
-                route = [route, part.replace(slashAtStart, "").replace(slashAtEnd, "")].join("/blog/blog/");
+                route = [route, part.replace(slashAtStart, "").replace(slashAtEnd, "")].join("/blog/");
             }
         });
-        return route += "/blog/blog/";
+        return route += "/blog/";
     };
 
     function ghostPaths() {
         var path = window.location.pathname,
-            subdir = path.substr(0, path.search("/blog/blog/ghost/")),
-            adminRoot = subdir + "/blog/blog/ghost",
-            apiRoot = subdir + "/blog/blog/ghost/api/v0.1";
+            subdir = path.substr(0, path.search("/blog/ghost/")),
+            adminRoot = subdir + "/blog/ghost",
+            apiRoot = subdir + "/blog/ghost/api/v0.1";
 
         function assetUrl(src) {
             return subdir + src;
@@ -22944,7 +22944,7 @@ define('ghost/utils/ghost-paths', ['exports'], function (exports) {
 
         return {
             subdir: subdir,
-            blogRoot: subdir + "/blog/blog/",
+            blogRoot: subdir + "/blog/",
             adminRoot: adminRoot,
             apiRoot: apiRoot,
 
@@ -22962,9 +22962,9 @@ define('ghost/utils/ghost-paths', ['exports'], function (exports) {
                         return makeRoute(arguments[0], Array.prototype.slice.call(arguments, 1));
                     } else if (arguments.length === 1) {
                         var arg = arguments[0];
-                        return arg.slice(-1) === "/blog/blog/" ? arg : arg + "/blog/blog/";
+                        return arg.slice(-1) === "/blog/" ? arg : arg + "/blog/";
                     }
-                    return "/blog/blog/";
+                    return "/blog/";
                 },
 
                 asset: assetUrl
