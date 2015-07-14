@@ -1,116 +1,25 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Muit´s lab</title><description>This is the Muit´s lab</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Tue, 14 Jul 2015 10:45:41 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>When you are bored you make a bot</title><description>&lt;p&gt;I was thinking what to do some days ago, and one idea came to my mind. I remembered the last year when some friends were playing with the twitter api for ruby.&lt;/p&gt;
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+&lt;p&gt;Why not to do the same on node?&lt;/p&gt;
 
-    <title>When you are bored you make a bot</title>
-    <meta name="description" content="">
+&lt;h2 id="repositoryongithub"&gt;Repository on github&lt;/h2&gt;
 
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+&lt;p&gt;The code below is on github at&lt;/p&gt;</description><link>http://localhost:2368/when-you-are-bored-you-make-a-bot/</link><guid isPermaLink="false">89762aab-b12c-47bc-b727-10720539aedc</guid><dc:creator>Miguel Fernández</dc:creator><pubDate>Mon, 13 Jul 2015 15:45:01 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/07/Twitter-Bots-1.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2015/07/Twitter-Bots-1.jpg" alt="When you are bored you make a bot"&gt;&lt;p&gt;I was thinking what to do some days ago, and one idea came to my mind. I remembered the last year when some friends were playing with the twitter api for ruby.&lt;/p&gt;
 
-    <link rel="shortcut icon" href="./favicon.ico">
+&lt;p&gt;Why not to do the same on node?&lt;/p&gt;
 
-    <link rel="stylesheet" href="./assets/css/prism.css?v=235f9d795b"> 
-    <!--[if lte IE 8]><script src="./assets/css/ie/html5shiv.js?v=235f9d795b"></script><![endif]-->
-    <script src="./assets/js/jquery.min.js?v=235f9d795b"></script>
-    <script src="./assets/js/skel.min.js?v=235f9d795b"></script>
-    <script src="./assets/js/skel-layers.min.js?v=235f9d795b"></script>
-    <script src="./assets/js/init.js?v=235f9d795b"></script>
-    <script src="./assets/js/prism.js?v=235f9d795b"></script>
-    <noscript>
-        <link rel="stylesheet" href="./assets/css/skel.css?v=235f9d795b">
-        <link rel="stylesheet" href="./assets/css/style.css?v=235f9d795b">
-        <link rel="stylesheet" href="./assets/css/style-xlarge.css?v=235f9d795b">   
-    </noscript>
-    <!--[if lte IE 8]><link rel="stylesheet" href="./assets/css/ie/v8.css?v=235f9d795b" /><![endif]-->
+&lt;h2 id="repositoryongithub"&gt;Repository on github&lt;/h2&gt;
 
-    <link rel="canonical" href="https://muit.github.io/blog/when-you-are-bored-you-make-a-bot/">
-    
-    <meta property="og:site_name" content="Muit´s lab">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="When you are bored you make a bot">
-    <meta property="og:description" content="I was thinking what to do some days ago, and one idea came to my mind. I remembered the last year when some friends were playing with the twitter api for ruby. Why not to do the same on node?...">
-    <meta property="og:url" content="https://muit.github.io/blog/when-you-are-bored-you-make-a-bot/">
-    <meta property="og:image" content="https://muit.github.io/blog/content/images/2015/07/Twitter-Bots-1.jpg">
-    <meta property="article:published_time" content="2015-07-13T15:45:01.204Z">
-    <meta property="article:modified_time" content="2015-07-13T15:45:01.203Z">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="When you are bored you make a bot">
-    <meta name="twitter:description" content="I was thinking what to do some days ago, and one idea came to my mind. I remembered the last year when some friends were playing with the twitter api for ruby. Why not to do the same on node?...">
-    <meta name="twitter:url" content="https://muit.github.io/blog/when-you-are-bored-you-make-a-bot/">
-    <meta name="twitter:image:src" content="https://muit.github.io/blog/content/images/2015/07/Twitter-Bots-1.jpg">
-    
-    <script type="application/ld+json">
-{
-    "@context": "http://schema.org",
-    "@type": "Article",
-    "publisher": "Muit´s lab",
-    "author": {
-        "@type": "Person",
-        "name": "Miguel Fernández",
-        "url": "https://muit.github.io/blog/author/miguel",
-        "sameAs": null,
-        "description": null
-    },
-    "headline": "When you are bored you make a bot",
-    "url": "https://muit.github.io/blog/when-you-are-bored-you-make-a-bot/",
-    "datePublished": "2015-07-13T15:45:01.204Z",
-    "dateModified": "2015-07-13T15:45:01.203Z",
-    "image": "https://muit.github.io/blog/content/images/2015/07/Twitter-Bots-1.jpg",
-    "description": "I was thinking what to do some days ago, and one idea came to my mind. I remembered the last year when some friends were playing with the twitter api for ruby. Why not to do the same on node?..."
-}
-    </script>
+&lt;p&gt;The code below is on github at &lt;a href="https://github.com/muit/twitterbot"&gt;github.com/muit/twitterbot&lt;/a&gt;. Feel free to download or contribute.&lt;/p&gt;
 
-    <meta name="generator" content="Ghost 0.6">
-    <link rel="alternate" type="application/rss+xml" title="Muit´s lab" href="https://muit.github.io/blog/rss/">
-</head>
-<body class="post-template">
+&lt;h2 id="thetwitterapionnode"&gt;The Twitter api on node&lt;/h2&gt;
 
-    <div class="site-wrapper">
+&lt;p&gt;I found that there are many twitter interfaces for node, but my main focus was to do something quite fast and simple, so i decided to use Twit. It is a simple Twitter client api that supports the rest and streaming apis. &lt;br&gt;
+I started the bot just stablishing connection with twitter and registering my &lt;a href="https://apps.twitter.com/"&gt;twitter app&lt;/a&gt;.&lt;/p&gt;
 
-        
+&lt;p&gt;Then I modified the example bot object that the Twit developers published and adapted it to my neccesities:&lt;/p&gt;
 
-
-<header id="header" class="main-header post-head">
-    <h1>
-        <a href="https://muit.github.io/blog">Muit´s lab</a>
-    </h1>
-    <nav id="nav">
-    <ul>
-            <li class="nav-home" role="presentation"><a href="https://muit.github.io/blog/">Home</a></li>
-    </ul>
-</nav>
-
-</header>
-
-<section id="main" class="wrapper">
-    <div class="container post">
-
-        <header class="major">
-            <h2>When you are bored you make a bot</h2>
-            <p><time class="post-date" datetime="2015-07-13">13 July 2015</time> </p>
-        </header>
-
-            <a href="#" class="image fit"><img src="./content/images/2015/07/Twitter-Bots-1.jpg" alt=""></a>
-
-        <p>I was thinking what to do some days ago, and one idea came to my mind. I remembered the last year when some friends were playing with the twitter api for ruby.</p>
-
-<p>Why not to do the same on node?</p>
-
-<h2 id="repositoryongithub">Repository on github</h2>
-
-<p>The code below is on github at <a href="https://github.com/muit/twitterbot">github.com/muit/twitterbot</a>. Feel free to download or contribute.</p>
-
-<h2 id="thetwitterapionnode">The Twitter api on node</h2>
-
-<p>I found that there are many twitter interfaces for node, but my main focus was to do something quite fast and simple, so i decided to use Twit. It is a simple Twitter client api that supports the rest and streaming apis. <br>
-I started the bot just stablishing connection with twitter and registering my <a href="https://apps.twitter.com/">twitter app</a>.</p>
-
-<p>Then I modified the example bot object that the Twit developers published and adapted it to my neccesities:</p>
-
-<pre><code class="language-javascript">var Twit = require('twit');
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var Twit = require('twit');
 
 var CTBot = module.exports = function(config) {  
   this.twit = new Twit(config);
@@ -123,7 +32,7 @@ CTBot.prototype = {
   tweet: function(status, callback) {
     if (typeof status !== 'string') {
       return callback(new Error('tweet must be of type String'));
-    } else if (status.length &gt; 140) {
+    } else if (status.length &amp;gt; 140) {
       return callback(new Error('tweet is too long: ' + status.length));
     }
     this.twit.post('statuses/update', {
@@ -292,25 +201,25 @@ function datestring() {
 function handleError(err) {  
   console.error('Error(' + err.statusCode + "): " + err.data);
 }
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<p>I did this to give the main code a simplified way to manage twitter.</p>
+&lt;p&gt;I did this to give the main code a simplified way to manage twitter.&lt;/p&gt;
 
-<h2 id="marcovchainstogeneraterandomtweets">Marcov chains to generate random tweets</h2>
+&lt;h2 id="marcovchainstogeneraterandomtweets"&gt;Marcov chains to generate random tweets&lt;/h2&gt;
 
-<p>I used the Marcov chains algorithm to allow the bot learn from some hashtags and write randomly generated tweets. <br>
-Basically Markov allows us to generate random strings depending on a dictionary. It joins one word to another depending on the probability. I think this webpage can explain it better: <a href="http://setosa.io/blog/2014/07/26/markov-chains/">http://setosa.io/blog/2014/07/26/markov-chains/</a></p>
+&lt;p&gt;I used the Marcov chains algorithm to allow the bot learn from some hashtags and write randomly generated tweets. &lt;br&gt;
+Basically Markov allows us to generate random strings depending on a dictionary. It joins one word to another depending on the probability. I think this webpage can explain it better: &lt;a href="http://setosa.io/blog/2014/07/26/markov-chains/"&gt;http://setosa.io/blog/2014/07/26/markov-chains/&lt;/a&gt;&lt;/p&gt;
 
-<p>Same as the twitter code, i created a separated class to markov. <br>
-His memory is saved as a json file each 20 minutes, and you may be thinking why didnt he use a database? Becouse i didn´t found the correct way to implement it maintaining a good performance. Anyway, im thinking about using mongoose, maybe on the future. </p>
+&lt;p&gt;Same as the twitter code, i created a separated class to markov. &lt;br&gt;
+His memory is saved as a json file each 20 minutes, and you may be thinking why didnt he use a database? Becouse i didn´t found the correct way to implement it maintaining a good performance. Anyway, im thinking about using mongoose, maybe on the future. &lt;/p&gt;
 
-<pre><code class="language-javascript">/****************
+&lt;pre&gt;&lt;code class="language-javascript"&gt;/****************
  * Markov Class *
  ****************/
 function Markov(config, memory, count) {  
   var self = this;
 
-  if (memory &amp;&amp; count) {
+  if (memory &amp;amp;&amp;amp; count) {
 
     this.memory = memory;
     this.count = count;
@@ -332,7 +241,7 @@ Markov.prototype = {
 
   learn: function(txt) {
     this.count++;
-    if (this.count &gt; this.learnSize) {
+    if (this.count &amp;gt; this.learnSize) {
       this.reset();
     }
 
@@ -393,7 +302,7 @@ Markov.prototype = {
     var ret = [];
 
     for (
-      var i = 0; i &lt; this.order; ret.push(''), i++
+      var i = 0; i &amp;lt; this.order; ret.push(''), i++
     );
 
     return ret;
@@ -413,13 +322,13 @@ module.exports = Markov;
 Array.prototype.random = function() {  
   return this[Math.floor(Math.random() * this.length)];
 };
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<h2 id="makeitwork">Make it work</h2>
+&lt;h2 id="makeitwork"&gt;Make it work&lt;/h2&gt;
 
-<p>The final step to make this work is to join the twitter api with the markov chains. I also included here the save/load source to make persistent the markov learning. Also some cool logging, config loading and the auto tweet and retweet events.</p>
+&lt;p&gt;The final step to make this work is to join the twitter api with the markov chains. I also included here the save/load source to make persistent the markov learning. Also some cool logging, config loading and the auto tweet and retweet events.&lt;/p&gt;
 
-<pre><code class="language-javascript">var fs = require('fs');
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var fs = require('fs');
 
 var Bot = require('./bot'),  
   Markov = require("./markov"),
@@ -429,7 +338,7 @@ var bot = new Bot(config.twitter);
 
 console.log('CTBot: Running.');
 
-if (config.markov &amp;&amp; config.markov !== false) {  
+if (config.markov &amp;amp;&amp;amp; config.markov !== false) {  
   //Load Markov memory
   console.log("(Markov) Loading memory.");
   try {
@@ -511,7 +420,7 @@ if (config.autoFollow) {
                 console.log("Couldn´t unfollow. " + err);
                 return;
               }
-              console.log('\nUnfollowed @' + reply.screen_name + ".\nHe is not my friend &gt;:(");
+              console.log('\nUnfollowed @' + reply.screen_name + ".\nHe is not my friend &amp;gt;:(");
             });
           }
         });
@@ -572,7 +481,7 @@ function writeFile(file, obj, options, callback) {
     options = {}
   }
 
-  var spaces = typeof options === 'object' &amp;&amp; options !== null ? 'spaces' in options ? options.spaces : this.spaces : this.spaces
+  var spaces = typeof options === 'object' &amp;amp;&amp;amp; options !== null ? 'spaces' in options ? options.spaces : this.spaces : this.spaces
 
   var str = ''
   try {
@@ -583,50 +492,4 @@ function writeFile(file, obj, options, callback) {
 
   fs.writeFile(file, str, options, callback)
 }
-</code></pre>
-    </div>
-</section>
-
-
-
-        <footer id="footer">
-            <div class="container">
-                <div class="row">
-                    <section class="4u 6u(medium) 12u$(small)">
-                        <h3>Mail</h3>
-                        <ul class="alt">
-                            <li>
-                                <a href="mailto:miguel_3c@hotmail.com" target="_blank">miguel_3c@hotmail.com</a>
-                            </li>
-                        </ul>
-                    </section>
-                    <section class="4u 6u$(medium) 12u$(small)">
-                        <h3>Address</h3>
-                        <ul class="alt">
-                            <li>
-                                Madrid     TresCantos
-                                <br>Spain
-                            </li>
-                        </ul>
-                    </section>
-                    <section class="4u$ 12u$(medium) 12u$(small)">
-                        <h3>Social</h3>
-                        <ul class="icons">
-                            <li><a href="https://muitxer.bitballoon.com" class="icon rounded fa-cubes"><span class="label">Personal Site</span></a></li>
-                            <li><a href="https://twitter.com/muitxer" class="icon rounded fa-twitter"><span class="label">Twitter</span></a></li>
-                            <li><a href="https://github.com/muit" class="icon rounded fa-github"><span class="label">Github</span></a></li>
-                            <li><a href="https://es.linkedin.com/in/muitxer" class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                        </ul>
-                    </section>
-                </div>
-                <ul class="copyright">
-                    <li><a href="https://muit.github.io/blog">Muit´s lab</a> © 2015</li>
-                    <li><a href="https://muitxer.bitballoon.com">Muitxer</a></li>
-                </ul>
-            </div>
-        </footer>
-
-    </div>
-
-    <script src="./public/jquery.js?v=235f9d795b"></script>
-</body>
+&lt;/code&gt;&lt;/pre&gt;</content:encoded></item></channel></rss>
