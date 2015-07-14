@@ -4570,7 +4570,7 @@ body.zen {
     box-shadow: inset 0px 0px 0px 1px #CDD5D9;
     color: #7E878B; }
     .permalink-input-wrapper .permalink-parameter:after {
-      content: "/";
+      content: "/blog/blog/";
       position: absolute;
       top: 2px;
       left: -7px;

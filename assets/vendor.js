@@ -5511,7 +5511,7 @@ function createSafeFragment( document ) {
 
 var nodeNames = "abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|" +
 		"header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",
-	rinlinejQuery = / jQuery\d+="(?:null|\d+)"/g,
+	rinlinejQuery = / jQuery\d+="(?:null|\d+)"/blog/blog/blog/g,
 	rnoshimcache = new RegExp("<(?:" + nodeNames + ")[\\s/>]", "i"),
 	rleadingWhitespace = /^\s+/,
 	rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
@@ -5589,7 +5589,7 @@ function manipulationTarget( elem, content ) {
 
 // Replace/restore the type attribute of script elements for safe DOM manipulation
 function disableScript( elem ) {
-	elem.type = (jQuery.find.attr( elem, "type" ) !== null) + "/" + elem.type;
+	elem.type = (jQuery.find.attr( elem, "type" ) !== null) + "/blog/blog/blog/" + elem.type;
 	return elem;
 }
 function restoreScript( elem ) {
@@ -7915,7 +7915,7 @@ jQuery.fn.delay = function( time, type ) {
 
 	// Make sure that URLs aren't manipulated
 	// (IE normalizes it by default)
-	support.hrefNormalized = a.getAttribute("href") === "/a";
+	support.hrefNormalized = a.getAttribute("href") === "/blog/blog/blog/a";
 
 	// Check the default checkbox/radio value ("" on WebKit; "on" elsewhere)
 	support.checkOn = !!input.value;
@@ -9273,7 +9273,7 @@ jQuery.extend({
 		// Add protocol if not provided (#5866: IE7 issue with protocol-less urls)
 		// Handle falsy url in the settings object (#10093: consistency with old signature)
 		// We also use the url parameter if available
-		s.url = ( ( url || s.url || ajaxLocation ) + "" ).replace( rhash, "" ).replace( rprotocol, ajaxLocParts[ 1 ] + "//" );
+		s.url = ( ( url || s.url || ajaxLocation ) + "" ).replace( rhash, "" ).replace( rprotocol, ajaxLocParts[ 1 ] + "/blog/blog/blog//" );
 
 		// Alias method option to type as per ticket #12004
 		s.type = options.method || options.type || s.method || s.type;
@@ -31090,7 +31090,7 @@ enifed('ember-routing/location/auto_location', ['exports', 'ember-metal/core', '
     */
     create: function (options) {
       if (options && options.rootURL) {
-        Ember['default'].assert('rootURL must end with a trailing forward slash e.g. "/app/"',
+        Ember['default'].assert('rootURL must end with a trailing forward slash e.g. "/blog/blog/blog/app/"',
                      options.rootURL.charAt(options.rootURL.length-1) === '/');
         this.rootURL = options.rootURL;
       }
@@ -31719,7 +31719,7 @@ enifed('ember-routing/system/dsl', ['exports', 'ember-metal/core', 'ember-metal/
       
         if (this.enableLoadingSubstates) {
           createRoute(this, name + '_loading', { resetNamespace: options.resetNamespace });
-          createRoute(this, name + '_error', { path: "/_unused_dummy_error_path_route_" + name + "/:error" });
+          createRoute(this, name + '_error', { path: "/blog/blog/blog/_unused_dummy_error_path_route_" + name + "/blog/blog/blog/:error" });
         }
       
 
@@ -31730,7 +31730,7 @@ enifed('ember-routing/system/dsl', ['exports', 'ember-metal/core', 'ember-metal/
         });
 
         createRoute(dsl, 'loading');
-        createRoute(dsl, 'error', { path: "/_unused_dummy_error_path_route_" + name + "/:error" });
+        createRoute(dsl, 'error', { path: "/blog/blog/blog/_unused_dummy_error_path_route_" + name + "/blog/blog/blog/:error" });
 
         callback.call(dsl);
 
@@ -31742,7 +31742,7 @@ enifed('ember-routing/system/dsl', ['exports', 'ember-metal/core', 'ember-metal/
 
     push: function(url, name, callback) {
       var parts = name.split('.');
-      if (url === "" || url === "/" || parts[parts.length-1] === "index") { this.explicitIndex = true; }
+      if (url === "" || url === "/blog/blog/blog/" || parts[parts.length-1] === "index") { this.explicitIndex = true; }
 
       this.matches.push([url, name, callback]);
     },
@@ -31765,7 +31765,7 @@ enifed('ember-routing/system/dsl', ['exports', 'ember-metal/core', 'ember-metal/
       var dslMatches = this.matches;
 
       if (!this.explicitIndex) {
-        this.route("index", { path: "/" });
+        this.route("index", { path: "/blog/blog/blog/" });
       }
 
       return function(match) {
@@ -31795,7 +31795,7 @@ enifed('ember-routing/system/dsl', ['exports', 'ember-metal/core', 'ember-metal/
     var fullName = getFullName(dsl, name, options.resetNamespace);
 
     if (typeof options.path !== 'string') {
-      options.path = "/" + name;
+      options.path = "/blog/blog/blog/" + name;
     }
 
     dsl.push(options.path, fullName, callback);
@@ -33986,7 +33986,7 @@ enifed('ember-routing/system/router', ['exports', 'ember-metal/core', 'ember-met
       });
 
       function generateDSL() {
-        this.resource('application', { path: "/", overrideNameAssertion: true }, function() {
+        this.resource('application', { path: "/blog/blog/blog/", overrideNameAssertion: true }, function() {
           for (var i=0; i < dslCallbacks.length; i++) {
             dslCallbacks[i].call(this);
           }
@@ -48834,7 +48834,7 @@ enifed('ember-views/system/lookup_partial', ['exports', 'ember-metal/core'], fun
   'use strict';
 
   function lookupPartial(view, templateName) {
-    var nameParts = templateName.split("/");
+    var nameParts = templateName.split("/blog/blog/blog/");
     var lastPart = nameParts[nameParts.length - 1];
 
     nameParts[nameParts.length - 1] = "_" + lastPart;
@@ -53976,7 +53976,7 @@ enifed("htmlbars-util/quoting",
     "use strict";
     function escapeString(str) {
       str = str.replace(/\\/g, "\\\\");
-      str = str.replace(/"/g, '\\"');
+      str = str.replace(/"/blog/blog/blog/g, '\\"');
       str = str.replace(/\n/g, "\\n");
       return str;
     }
@@ -54507,7 +54507,7 @@ enifed("route-recognizer",
     function DynamicSegment(name) { this.name = name; }
     DynamicSegment.prototype = {
       eachChar: function(callback) {
-        callback({ invalidChars: "/", repeat: true });
+        callback({ invalidChars: "/blog/blog/blog/", repeat: true });
       },
 
       regex: function() {
@@ -54542,11 +54542,11 @@ enifed("route-recognizer",
     };
 
     function parse(route, names, types) {
-      // normalize route as not starting with a "/". Recognition will
+      // normalize route as not starting with a "/blog/blog/blog/". Recognition will
       // also normalize.
-      if (route.charAt(0) === "/") { route = route.substr(1); }
+      if (route.charAt(0) === "/blog/blog/blog/") { route = route.substr(1); }
 
-      var segments = route.split("/"), results = [];
+      var segments = route.split("/blog/blog/blog/"), results = [];
 
       for (var i=0, l=segments.length; i<l; i++) {
         var segment = segments[i], match;
@@ -54803,9 +54803,9 @@ enifed("route-recognizer",
 
             isEmpty = false;
 
-            // Add a "/" for the new segment
-            currentState = currentState.put({ validChars: "/" });
-            regex += "/";
+            // Add a "/blog/blog/blog/" for the new segment
+            currentState = currentState.put({ validChars: "/blog/blog/blog/" });
+            regex += "/blog/blog/blog/";
 
             // Add a representation of the segment to the NFA and regex
             currentState = addSegment(currentState, segment);
@@ -54817,8 +54817,8 @@ enifed("route-recognizer",
         }
 
         if (isEmpty) {
-          currentState = currentState.put({ validChars: "/" });
-          regex += "/";
+          currentState = currentState.put({ validChars: "/blog/blog/blog/" });
+          regex += "/blog/blog/blog/";
         }
 
         currentState.handlers = handlers;
@@ -54859,7 +54859,7 @@ enifed("route-recognizer",
 
           if (segment instanceof EpsilonSegment) { continue; }
 
-          output += "/";
+          output += "/blog/blog/blog/";
           output += segment.generate(params);
         }
 
@@ -54950,10 +54950,10 @@ enifed("route-recognizer",
 
         // DEBUG GROUP path
 
-        if (path.charAt(0) !== "/") { path = "/" + path; }
+        if (path.charAt(0) !== "/blog/blog/blog/") { path = "/blog/blog/blog/" + path; }
 
         pathLen = path.length;
-        if (pathLen > 1 && path.charAt(pathLen - 1) === "/") {
+        if (pathLen > 1 && path.charAt(pathLen - 1) === "/blog/blog/blog/") {
           path = path.substr(0, pathLen - 1);
           isSlashDropped = true;
         }
@@ -54978,7 +54978,7 @@ enifed("route-recognizer",
           // if a trailing slash was dropped and a star segment is the last segment
           // specified, put the trailing slash back
           if (isSlashDropped && state.regex.source.slice(-5) === "(.+)$") {
-            path = path + "/";
+            path = path + "/blog/blog/blog/";
           }
           return findHandler(state, path, queryParams);
         }
@@ -55845,12 +55845,12 @@ enifed("router/router",
       followed by the URL segment it handles.
 
       ```
-      |~index ("/")
-      | |~posts ("/posts")
-      | | |-showPost ("/:id")
-      | | |-newPost ("/new")
-      | | |-editPost ("/edit")
-      | |~about ("/about/:id")
+      |~index ("/blog/blog/blog/")
+      | |~posts ("/blog/blog/blog/posts")
+      | | |-showPost ("/blog/blog/blog/:id")
+      | | |-newPost ("/blog/blog/blog/new")
+      | | |-editPost ("/blog/blog/blog/edit")
+      | |~about ("/blog/blog/blog/about/:id")
       ```
 
       Consider the following transitions:
@@ -61540,7 +61540,7 @@ define("ember/load-initializers",
         ### Pathname customization
 
         For example if you have an object LineItem with an
-        endpoint of "/line_items/".
+        endpoint of "/blog/blog/blog/line_items/".
 
         ```js
         App.ApplicationAdapter = DS.RESTAdapter.extend({
@@ -61838,7 +61838,7 @@ define("ember/load-initializers",
           "post": {
             "id": 1,
             "title": "Rails is omakase",
-            "links": { "comments": "/posts/1/comments" }
+            "links": { "comments": "/blog/blog/blog/posts/1/comments" }
           }
         }
         ```
@@ -61879,7 +61879,7 @@ define("ember/load-initializers",
           "person": {
             "id": 1,
             "name": "Tom Dale",
-            "links": { "group": "/people/1/group" }
+            "links": { "group": "/blog/blog/blog/people/1/group" }
           }
         }
         ```
@@ -70227,7 +70227,7 @@ define("ember/load-initializers",
         The call made to the server, using a Rails backend, will look something like this:
 
         ```
-        Started GET "/api/v1/person?page=1"
+        Started GET "/blog/blog/blog/api/v1/person?page=1"
         Processing by Api::V1::PersonsController#index as HTML
         Parameters: {"page"=>"1"}
         ```
@@ -70241,7 +70241,7 @@ define("ember/load-initializers",
         The call to the server, using a Rails backend, will look something like this:
 
         ```
-        Started GET "/api/v1/person?ids%5B%5D=1&ids%5B%5D=2&ids%5B%5D=3"
+        Started GET "/blog/blog/blog/api/v1/person?ids%5B%5D=1&ids%5B%5D=2&ids%5B%5D=3"
         Processing by Api::V1::PersonsController#index as HTML
         Parameters: {"ids"=>["1", "2", "3"]}
         ```
@@ -71254,7 +71254,7 @@ define("ember/load-initializers",
           firstName: "Tom",
           lastName: "Dale",
           links: {
-            children: "/people/1/children"
+            children: "/blog/blog/blog/people/1/children"
           }
         }
         ```
@@ -74513,7 +74513,7 @@ function makeError(reject) {
 
     validator.escape = function (str) {
         return (str.replace(/&/g, '&amp;')
-            .replace(/"/g, '&quot;')
+            .replace(/"/blog/blog/blog/g, '&quot;')
             .replace(/'/g, '&#x27;')
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;')
@@ -74983,7 +74983,7 @@ function makeError(reject) {
 //
 // Smart diff tools like Araxis Merge will be able to match up
 // this file with markdown.pl in a useful way.  A little tweaking
-// helps: in a copy of markdown.pl, replace "#" with "//" and
+// helps: in a copy of markdown.pl, replace "#" with "/blog/blog/blog//" and
 // replace "$text" with "text".  Be sure to ignore whitespace
 // and line endings.
 //
@@ -75244,7 +75244,7 @@ Showdown.converter = function(converter_options) {
              // Put back the parenthetical statement we stole.
              return m3+m4;
            } else if (m4) {
-             g_titles[m1] = m4.replace(/"/g,"&quot;");
+             g_titles[m1] = m4.replace(/"/blog/blog/blog/g,"&quot;");
            }
 
            // Completely remove the definition from the text
@@ -75594,7 +75594,7 @@ Showdown.converter = function(converter_options) {
     var result = "<a href=\"" + url + "\"";
 
     if (title !== "") {
-      title = title.replace(/"/g,"&quot;");
+      title = title.replace(/"/blog/blog/blog/g,"&quot;");
       title = escapeCharacters(title,"*_");
       result +=  " title=\"" + title + "\"";
     }
@@ -75690,7 +75690,7 @@ Showdown.converter = function(converter_options) {
       }
     }
 
-    alt_text = alt_text.replace(/"/g,"&quot;");
+    alt_text = alt_text.replace(/"/blog/blog/blog/g,"&quot;");
     url = escapeCharacters(url,"*_");
     var result = "<img src=\"" + url + "\" alt=\"" + alt_text + "\"";
 
@@ -75698,7 +75698,7 @@ Showdown.converter = function(converter_options) {
     // Replicate this bug.
 
     //if (title != "") {
-    title = title.replace(/"/g,"&quot;");
+    title = title.replace(/"/blog/blog/blog/g,"&quot;");
     title = escapeCharacters(title,"*_");
     result +=  " title=\"" + title + "\"";
     //}
@@ -76600,7 +76600,7 @@ var Ghost = Ghost || {};
                             output;
 
                         if (src && (src.match(uriRegex) || src.match(pathRegex))) {
-                            result = '<img class="js-upload-target" src="' + src + '"/>';
+                            result = '<img class="js-upload-target" src="' + src + '"/blog/blog/blog/>';
                         }
 
                         output = '<section class="js-drop-zone image-uploader">' +
@@ -98300,8 +98300,8 @@ var define, requireModule;
 
     function resolve(child) {
       if (child.charAt(0) !== '.') { return child; }
-      var parts = child.split("/");
-      var parentBase = name.split("/").slice(0, -1);
+      var parts = child.split("/blog/blog/blog/");
+      var parentBase = name.split("/blog/blog/blog/").slice(0, -1);
 
       for (var i=0, l=parts.length; i<l; i++) {
         var part = parts[i];
@@ -98311,7 +98311,7 @@ var define, requireModule;
         else { parentBase.push(part); }
       }
 
-      return parentBase.join("/");
+      return parentBase.join("/blog/blog/blog/");
     }
   };
 
@@ -99995,8 +99995,8 @@ var define, requireModule;
 
     function resolve(child) {
       if (child.charAt(0) !== '.') { return child; }
-      var parts = child.split("/");
-      var parentBase = name.split("/").slice(0, -1);
+      var parts = child.split("/blog/blog/blog/");
+      var parentBase = name.split("/blog/blog/blog/").slice(0, -1);
 
       for (var i=0, l=parts.length; i<l; i++) {
         var part = parts[i];
@@ -100006,7 +100006,7 @@ var define, requireModule;
         else { parentBase.push(part); }
       }
 
-      return parentBase.join("/");
+      return parentBase.join("/blog/blog/blog/");
     }
   };
 
@@ -101398,7 +101398,7 @@ var decodeCss;
   var CDC = '-->';
   // S  ::=  wc+
   var S = WC + '+';
-  // COMMENT  ::=  "/*" [^*]* '*'+ ([^/] [^*]* '*'+)* "/"
+  // COMMENT  ::=  "/blog/blog/blog/*" [^*]* '*'+ ([^/] [^*]* '*'+)* "/blog/blog/blog/"
   // Diff: recognizes // comments.
   var COMMENT = '/(?:[*][^*]*[*]+(?:[^/][^*]*[*]+)*/|/[^\\n\\f]*)';
   // FUNCTION  ::=  ident '('
@@ -104399,7 +104399,7 @@ var html = (function(html4) {
   var looseAmpRe = /&([^a-z#]|#(?:[^0-9x]|x(?:[^0-9a-f]|$)|$)|$)/gi;
   var ltRe = /[<]/g;
   var gtRe = />/g;
-  var quotRe = /\"/g;
+  var quotRe = /\"/blog/blog/blog/g;
 
   /**
    * Escapes HTML special characters in attribute values.
@@ -109164,7 +109164,7 @@ if (typeof window !== 'undefined') {
 
   // Converts a {top, bottom, left, right} box from line-local
   // coordinates into another coordinate system. Context may be one of
-  // "line", "div" (display.lineDiv), "local"/null (editor), "window",
+  // "line", "div" (display.lineDiv), "local"/blog/blog/blog/null (editor), "window",
   // or "page".
   function intoCoordSystem(cm, lineObj, rect, context) {
     if (lineObj.widgets) for (var i = 0; i < lineObj.widgets.length; ++i) if (lineObj.widgets[i].above) {
@@ -109187,7 +109187,7 @@ if (typeof window !== 'undefined') {
   }
 
   // Coverts a box from "div" coords to another coordinate system.
-  // Context may be "window", "page", "div", or "local"/null.
+  // Context may be "window", "page", "div", or "local"/blog/blog/blog/null.
   function fromCoordSystem(cm, coords, context) {
     if (context == "div") return coords;
     var left = coords.left, top = coords.top;
@@ -111045,7 +111045,7 @@ if (typeof window !== 'undefined') {
   // API UTILITIES
 
   // Indent the given line. The how parameter can be "smart",
-  // "add"/null, "subtract", or "prev". When aggressive is false
+  // "add"/blog/blog/blog/null, "subtract", or "prev". When aggressive is false
   // (typically set to true for forced single-line indents), empty
   // lines are not indented, and places where the mode returns Pass
   // are left alone.
@@ -114864,7 +114864,7 @@ if (typeof window !== 'undefined') {
                   19: "Pause", 20: "CapsLock", 27: "Esc", 32: "Space", 33: "PageUp", 34: "PageDown", 35: "End",
                   36: "Home", 37: "Left", 38: "Up", 39: "Right", 40: "Down", 44: "PrintScrn", 45: "Insert",
                   46: "Delete", 59: ";", 61: "=", 91: "Mod", 92: "Mod", 93: "Mod", 107: "=", 109: "-", 127: "Delete",
-                  173: "-", 186: ";", 187: "=", 188: ",", 189: "-", 190: ".", 191: "/", 192: "`", 219: "[", 220: "\\",
+                  173: "-", 186: ";", 187: "=", 188: ",", 189: "-", 190: ".", 191: "/blog/blog/blog/", 192: "`", 219: "[", 220: "\\",
                   221: "]", 222: "'", 63232: "Up", 63233: "Down", 63234: "Left", 63235: "Right", 63272: "Delete",
                   63273: "Home", 63275: "End", 63276: "PageUp", 63277: "PageDown", 63302: "Insert"};
   CodeMirror.keyNames = keyNames;
@@ -115389,7 +115389,7 @@ CodeMirror.defineMode("xml", function(config, parserConfig) {
         state.tokenize = inBlock("meta", "?>");
         return "meta";
       } else {
-        type = stream.eat("/") ? "closeTag" : "openTag";
+        type = stream.eat("/blog/blog/blog/") ? "closeTag" : "openTag";
         state.tokenize = inTag;
         return "tag bracket";
       }
@@ -115413,7 +115413,7 @@ CodeMirror.defineMode("xml", function(config, parserConfig) {
 
   function inTag(stream, state) {
     var ch = stream.next();
-    if (ch == ">" || (ch == "/" && stream.eat(">"))) {
+    if (ch == ">" || (ch == "/blog/blog/blog/" && stream.eat(">"))) {
       state.tokenize = inText;
       type = ch == ">" ? "endTag" : "selfcloseTag";
       return "tag bracket";
@@ -116054,7 +116054,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     },
 
     electricChars: "}",
-    blockCommentStart: "/*",
+    blockCommentStart: "/blog/blog/blog/*",
     blockCommentEnd: "*/",
     fold: "brace"
   };
@@ -116330,7 +116330,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
   function tokenCComment(stream, state) {
     var maybeEnd = false, ch;
     while ((ch = stream.next()) != null) {
-      if (maybeEnd && ch == "/") {
+      if (maybeEnd && ch == "/blog/blog/blog/") {
         state.tokenize = null;
         break;
       }
@@ -116365,7 +116365,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
         state.tokenize = tokenSGMLComment;
         return tokenSGMLComment(stream, state);
       },
-      "/": function(stream, state) {
+      "/blog/blog/blog/": function(stream, state) {
         if (!stream.eat("*")) return false;
         state.tokenize = tokenCComment;
         return tokenCComment(stream, state);
@@ -116384,8 +116384,8 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     fontProperties: fontProperties,
     allowNested: true,
     tokenHooks: {
-      "/": function(stream, state) {
-        if (stream.eat("/")) {
+      "/blog/blog/blog/": function(stream, state) {
+        if (stream.eat("/blog/blog/blog/")) {
           stream.skipToEnd();
           return ["comment", "comment"];
         } else if (stream.eat("*")) {
@@ -116425,8 +116425,8 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     fontProperties: fontProperties,
     allowNested: true,
     tokenHooks: {
-      "/": function(stream, state) {
-        if (stream.eat("/")) {
+      "/blog/blog/blog/": function(stream, state) {
+        if (stream.eat("/blog/blog/blog/")) {
           stream.skipToEnd();
           return ["comment", "comment"];
         } else if (stream.eat("*")) {
@@ -116524,13 +116524,13 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
   }();
 
   var isOperatorChar = /[+\-*&%=<>!?|~^]/;
-  var isJsonldKeyword = /^@(context|id|value|language|type|container|list|set|reverse|index|base|vocab|graph)"/;
+  var isJsonldKeyword = /^@(context|id|value|language|type|container|list|set|reverse|index|base|vocab|graph)"/blog/blog/blog/;
 
   function readRegexp(stream) {
     var escaped = false, next, inSet = false;
     while ((next = stream.next()) != null) {
       if (!escaped) {
-        if (next == "/" && !inSet) return;
+        if (next == "/blog/blog/blog/" && !inSet) return;
         if (next == "[") inSet = true;
         else if (inSet && next == "]") inSet = false;
       }
@@ -116564,11 +116564,11 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
     } else if (/\d/.test(ch)) {
       stream.match(/^\d*(?:\.\d*)?(?:[eE][+\-]?\d+)?/);
       return ret("number", "number");
-    } else if (ch == "/") {
+    } else if (ch == "/blog/blog/blog/") {
       if (stream.eat("*")) {
         state.tokenize = tokenComment;
         return tokenComment(stream, state);
-      } else if (stream.eat("/")) {
+      } else if (stream.eat("/blog/blog/blog/")) {
         stream.skipToEnd();
         return ret("comment", "comment");
       } else if (state.lastType == "operator" || state.lastType == "keyword c" ||
@@ -116616,7 +116616,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
   function tokenComment(stream, state) {
     var maybeEnd = false, ch;
     while (ch = stream.next()) {
-      if (ch == "/" && maybeEnd) {
+      if (ch == "/blog/blog/blog/" && maybeEnd) {
         state.tokenize = tokenBase;
         break;
       }
@@ -117129,9 +117129,9 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
     },
 
     electricInput: /^\s*(?:case .*?:|default:|\{|\})$/,
-    blockCommentStart: jsonMode ? null : "/*",
+    blockCommentStart: jsonMode ? null : "/blog/blog/blog/*",
     blockCommentEnd: jsonMode ? null : "*/",
-    lineComment: jsonMode ? null : "//",
+    lineComment: jsonMode ? null : "/blog/blog/blog//",
     fold: "brace",
     closeBrackets: "()[]{}''\"\"``",
 
@@ -117611,7 +117611,7 @@ XRegExp = XRegExp || (function (undef) {
  * }
  */
     self.cache = function (pattern, flags) {
-        var key = pattern + "/" + (flags || "");
+        var key = pattern + "/blog/blog/blog/" + (flags || "");
         return cache[key] || (cache[key] = self(pattern, flags));
     };
 
